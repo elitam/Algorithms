@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _01_Train
+namespace ExamPreparation
 {
-    public class Train
+   public class Train
     {
         private int number;
         private string name;
@@ -21,8 +21,7 @@ namespace _01_Train
             this.cars = cars;
         }
 
-        public int Number
-        {
+        public int Number {
             get { return this.number; }
             set { this.number = value; }
         }

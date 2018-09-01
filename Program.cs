@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _01_Train
+namespace ExamPreparation
 {
     class Program
     {
         private static Deque<Train> trains = new Deque<Train>();
         private static List<string> outputLines = new List<string>();
-
+        //TODO: add history functionality
 
         static void Main(string[] args)
-        {
+        {        
             string[] command;
             do
             {
@@ -35,14 +35,15 @@ namespace _01_Train
                 }
             } while (command[0] != "End");
 
-            System.IO.File.WriteAllLines(@"C:\Users\boco\Desktop\newFolder222\WriteLines.txt",
-                outputLines);
+           System.IO.File.WriteAllLines(@"C:\Users\User\Desktop\newFolder222\WriteLines.txt",
+               outputLines);
         }
 
         private static void Add(int number, string name, string type, int cars)
         {
             if (type == "F")
             {
+                //Add freight trains to back
                 trains.AddBack(new Train(number, name, type, cars));
             }
             else
@@ -59,14 +60,17 @@ namespace _01_Train
                 Train backTrain = trains.GetBack();
                 if (backTrain != null && backTrain.Type == "F" && backTrain.Cars > 15)
                 {
+                    // Console.WriteLine(trains.RemoveBack());
                     outputLines.Add(trains.RemoveBack() + "");
                 }
                 else if (frontTrain != null && frontTrain.Type == "P")
                 {
+                    //  Console.WriteLine(trains.RemoveFront());
                     outputLines.Add(trains.RemoveFront() + "");
                 }
                 else if (backTrain != null && backTrain.Type == "F")
                 {
+                  //  Console.WriteLine(trains.RemoveBack());
                     outputLines.Add(trains.RemoveBack() + "");
                 }
             }
@@ -81,14 +85,17 @@ namespace _01_Train
                 Train backTrain = trains.GetBack();
                 if (backTrain != null && backTrain.Type == "F" && backTrain.Cars > 15)
                 {
+                   // Console.WriteLine(backTrain);
                     outputLines.Add(backTrain + "");
                 }
                 else if (frontTrain != null && frontTrain.Type == "P")
                 {
+                    // Console.WriteLine(frontTrain);
                     outputLines.Add(frontTrain + "");
                 }
                 else if (backTrain != null && backTrain.Type == "F")
                 {
+                    //Console.WriteLine(backTrain);
                     outputLines.Add(backTrain + "");
                 }
             }
@@ -98,9 +105,9 @@ namespace _01_Train
         {
             foreach (var item in trains.GetHistory())
             {
+                // Console.WriteLine(item);
                 outputLines.Add(item + "");
             }
         }
     }
 }
-

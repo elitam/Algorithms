@@ -4,20 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _01_Train
+namespace ExamPreparation
 {
-
     public class Deque<T> where T : Train
     {
         private static int defaultCapacity = 16;
-        public int Capacity;
-        public int Count;
 
         private Stack<T> passengerTrains;
         private Stack<T> freightTrains;
         private Stack<T> history;
 
-        public Deque() : this(defaultCapacity) { }
+        public Deque() : this(defaultCapacity) {  }
 
         public Deque(int capacity)
         {
@@ -46,6 +43,9 @@ namespace _01_Train
                 }
             }
         }
+
+        public int Capacity;
+        public int Count;
 
         public void AddFront(T item)
         {
@@ -105,5 +105,4 @@ namespace _01_Train
             return this.history.ToArray();
         }
     }
-
 }
